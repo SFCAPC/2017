@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded",function(){
 	const theNav = document.getElementsByTagName('nav')[0];
 
 	mobileNavButton.addEventListener('click', ()=>{
-		console.log('clicky');
 		theNav.classList.toggle('open');
 	});
 
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
 		theLink.addEventListener('click', ()=>{
 			ss17_showTeamList(teamName);
-			console.log('clicked ' + teamName);
 		});
 	}
 
@@ -207,11 +205,14 @@ document.addEventListener("DOMContentLoaded",function(){
 			e.preventDefault();
 
 			const linkName = link.attributes.href.value.substring(1);
-			const anchor = document.querySelectorAll(`.anchor[name="${linkName}"`)[0];
+			const anchor = document.querySelectorAll('.anchor[name="' + linkName + '"]')[0];
 			const windowY = window.pageYOffset;
 			const anchorY = anchor.getBoundingClientRect().y;
 
-			window.scrollTo({ top: windowY + anchorY, behavior: "smooth" });
+			window.scrollTo({
+				top: windowY + anchorY,
+				behavior: "smooth"
+			});
 		});
 	});
 });
